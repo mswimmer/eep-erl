@@ -54,23 +54,23 @@ init() ->
 
 %%--------------------------------------------------------------------
 %% @doc
-%% Accumulate an event with key X
+%% Accumulate an event with key Key
 %% @end
 %%--------------------------------------------------------------------
--spec accumulate(State :: record(), X :: any()) -> record().
+-spec accumulate(State :: record(), Key :: any()) -> record().
 
-accumulate(#state{acc_dict = AccDict} = State, X) ->
-    State#state{acc_dict = dict:update_counter(X, 1, AccDict)}.
+accumulate(#state{acc_dict = AccDict} = State, Key) ->
+    State#state{acc_dict = dict:update_counter(Key, 1, AccDict)}.
 
 %%--------------------------------------------------------------------
 %% @doc
-%% Compensate for an event with key X
+%% Compensate for an event with key Key
 %% @end
 %%--------------------------------------------------------------------
--spec compensate(State :: record(), X :: any()) -> record().
+-spec compensate(State :: record(), Key :: any()) -> record().
 
-compensate(#state{acc_dict = AccDict} = State, X) ->
-    State#state{acc_dict = dict:update_counter(X, -1, AccDict)}.
+compensate(#state{acc_dict = AccDict} = State, Key) ->
+    State#state{acc_dict = dict:update_counter(Key, -1, AccDict)}.
 
 %%--------------------------------------------------------------------
 %% @doc
